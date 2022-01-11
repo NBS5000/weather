@@ -1,8 +1,8 @@
-## Quiz Time - Steve Barry
+## The Weather - Steve Barry
 
 ## <span style="color:green"> The Task</span>
 
-The task was to create a solution that asks the users questions, records their score and lists a set of hgh scores, with a timer that ends the quiz when it runs out.
+The task was to create a solution that provides the current and future weather for a city, or cities, that the user inputs, and retains a history of searches.
 
 ### ⭐ ⭐ S.T.A.R. ⭐ ⭐
 
@@ -10,17 +10,15 @@ The task was to create a solution that asks the users questions, records their s
 
 The provided user story was: 
 
-> <span style="font-style:italic">AS A coding boot camp student</span>
+> <span style="font-style:italic">AS A traveler</span>
 > 
-> <span style="font-style:italic">I WANT to take a timed quiz on JavaScript fundamentals that stores high scores</span>
+> <span style="font-style:italic">I WANT to see the weather outlook for multiple cities</span>
 >
-> <span style="font-style:italic">SO THAT I can gauge my progress compared to my peers</span>
+> <span style="font-style:italic">SO THAT I can plan a trip accordingly</span>
 
 **TASK**
 
-Provide a solution that asks a number of questions, against a timer, and then record the score and compare to other scores.
-
-*Having checked with the teachers, it was confirmed that the topic of questions does not necessarily need to be on Javascript*
+Provide a solution that allows a user to enter a city name, and provide them with the current weather and a forecast for the next 5 days. It will also retain a search history that can be clicked to 'quick view' the weather and forecast again.
 
 **ACTION**
 
@@ -49,17 +47,17 @@ Writing of a solution to resolve the situation, including:
 
 The end code is stored on Github, and publicly available and viewable. This result meets all requirements of the User Story and acceptance criteria:
 
-* ~~GIVEN I am taking a code quiz~~
-* ~~WHEN I click the start button~~
-* ~~THEN a timer starts and I am presented with a question~~
-* ~~WHEN I answer a question~~
-* ~~THEN I am presented with another question~~
-* ~~WHEN I answer a question incorrectly~~
-* ~~THEN time is subtracted from the clock~~
-* ~~WHEN all questions are answered or the timer reaches 0~~
-* ~~THEN the game is over~~
-* ~~WHEN the game is over~~
-* ~~THEN I can save my initials and my score~~
+* GIVEN a weather dashboard with form inputs
+* WHEN I search for a city
+* THEN I am presented with current and future conditions for that city and that city is added to the search history
+* WHEN I view current weather conditions for that city
+* THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
+* WHEN I view the UV index
+* THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+* WHEN I view future weather conditions for that city
+* THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+* WHEN I click on a city in the search history
+* THEN I am again presented with current and future conditions for that city
 
 ## <span style="color:green"> The Outcome</span>
 
