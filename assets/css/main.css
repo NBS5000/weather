@@ -28,20 +28,43 @@ h1{
 }
 #search{
     margin-top: 5%;
-    width: 250px;
-    height: 80px;
+    width: 200px;
+    height: 30px;
+    resize: none;
+    text-align: center;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80%;
 }
-textarea{
-    height:80px;
+#btn, #target{
+    margin-top: 5%;
+    background-size: contain;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
 }
 #btn{
-    height: 80px;
+    background-image: url("../images/searchBlue.png");
 }
-#display{
-    /* border: grey 1px solid; */
+#target{
+    background-image: url("../images/target.png");
+
+}
+
+#btn:hover{
+    background-image: url("../images/searchWhite.png");;
+}
+#topBlock{
+    display: block;
+    width: 100%;
+}
+table{
+    border: grey 1px solid;
 }
 td{
-    border: black solid 1px;
+    /* border: black solid 1px; */
     padding: 5px;
     width: 135px;
 }
@@ -63,10 +86,8 @@ th{
 .today{
     background-color: red;;
 }
-#target{
-    background-image: url("../images/target.png");
-    background-size: contain;
-    background-color: white;
-    height: 50px;
-    width: 50px;
+
+#location{
+    display: block;
+    width: 100%;
 }

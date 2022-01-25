@@ -15,10 +15,15 @@
 
     </header>
     <div id="mainContent">
-        <textarea name="search" id="search" cols="30" rows="3"></textarea>
-        <button id="btn">Search</button>
-        <hr>
-        <br/><br/><br/><br/>
+        <div id="topBlock">
+            <textarea name="search" id="search" cols="30" rows="3"></textarea>
+            <button id="btn"><!--img id="searchSvg" alt="Search Icon" src="./assets/images/searchBlue.png"></img--></button>
+            <button id="target" onclick="getLocation()"></button><br/><br/>
+        </div>
+        <select name="history" id="history"></select>
+        <br/><br/>
+        <h2 id="location"></h2>
+        <br/><br/>
         <table id="display0" hidden></table><br/><br/>
         <table id="display1" hidden></table><br/><br/>
         <table id="display2" hidden></table><br/><br/>
@@ -27,10 +32,10 @@
         <table id="display5" hidden></table><br/><br/>
         <table id="display6" hidden></table><br/><br/>
 
-        <select name="history" id="history"></select>
+
 
         <table id="today"></table>
-        <button id="target" onclick="getLocation()"></button>
+
     </div>
     <script src="./assets/js/mainScript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

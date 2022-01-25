@@ -90,7 +90,7 @@ function getWeather(lat, lon){
     .then(function(res){
         if(!res){
             setTimeout(500);
-            console.log(res);
+            // console.log(res);
         }
 
         displayWeather(res);
@@ -109,7 +109,8 @@ function displayWeather(response){
 
     console.log(response);
 
-    while(loop < noDays){
+    while(loop <(noDays-1)){
+
         var disp = "display"+loop;
         if(loop == 0){
             row1 = "<tr class='rowDate'><td class='today'>" + today.add(loop,"days").format("DD MMM YYYY") + "</td></tr>";
@@ -133,15 +134,8 @@ function displayWeather(response){
         //Exit
         loop = loop + 1;
     }
-    row1 = row1 + "</tr>";
-    row2 = row2 + "</tr>";
-    row3 = row3  + "</tr>";
-    row4 = row4  + "</tr>";
-    row5 = row5  + "</tr>";
 
-    total = row1 + row2 + row3 + row4 + row5;
-    // show = "<th>" + city + "</th>";
-    // document.getElementById("display").innerHTML = show + total;
+    document.getElementById("location").textContent = city;
     var current = [];
     current.push(response);
     localStorage.setItem("weatherCurrent",JSON.stringify(current));    
@@ -161,10 +155,9 @@ function addToHistory(city){
         x = x+1;
     } 
     if(x ==list){
-        if(city == "My Location"){
+        if(city != "My Location"){
             history.push(city);
             localStorage.setItem("weatherHistory",JSON.stringify(history));
-            console.log(history);
         }
     }
     dropList();
