@@ -107,7 +107,6 @@ function displayWeather(response){
     var row1, row2, row3, row4, row5, total, show;
     var today = moment();
 
-    console.log(response);
 
     while(loop <(noDays-1)){
 
@@ -134,7 +133,7 @@ function displayWeather(response){
         //Exit
         loop = loop + 1;
     }
-
+    city = city.replace(/\b[a-z]/g, (x) => x.toUpperCase());
     document.getElementById("location").textContent = city;
     var current = [];
     current.push(response);
@@ -156,6 +155,8 @@ function addToHistory(city){
     } 
     if(x ==list){
         if(city != "My Location"){
+            city = city.replace(/\b[a-z]/g, (x) => x.toUpperCase());
+
             history.push(city);
             localStorage.setItem("weatherHistory",JSON.stringify(history));
         }
@@ -168,9 +169,14 @@ function dropList(){
     var histList = JSON.parse(localStorage.getItem("weatherHistory"));
     var listLen = histList.length;
     var z = 0;
-    var content = "<option></option>";
+    if(listLen>0){
+        var content = "<option value='' disabled selected>Select your option</option>";
+    }
+    else{
+        var content = "<option value='' disabled selected>No search history</option>";
+    }
     while(z < listLen){
-        content = content + "<option>"+histList[z]+"</option>";
+        content = content + "<option value='"+histList[z]+"'>"+histList[z]+"</option>";
         z = z+1;
     }
     document.getElementById("history").innerHTML = content;

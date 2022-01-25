@@ -91,3 +91,10 @@ th{
     display: block;
     width: 100%;
 }
+#history{
+    margin-top: 5%;
+    width: 270px;
+    height: 30px;
+    text-align: center;
+    margin: 0 auto;
+}
