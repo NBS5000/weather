@@ -82,7 +82,7 @@ function getWeather(lat, lon){
     // debugger;
 
     //construct request URL to get city weather info from coordinates
-    var requestCityWeather = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=metric&appid=022816ce4f8542d4f9f3d06e40efbb54";    
+    var requestCityWeather = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=metric&appid=022816ce4f8542d4f9f3d06e40efbb54&exclude=minutely";    
     fetch(requestCityWeather)
     .then(
         (res) => res.json(),
@@ -90,7 +90,6 @@ function getWeather(lat, lon){
     .then(function(res){
         if(!res){
             setTimeout(500);
-            // console.log(res);
         }
 
         displayWeather(res);
@@ -101,18 +100,38 @@ function getWeather(lat, lon){
 }
 
 function displayWeather(response){
-    //debugger;
+   
     var noDays = response.daily.length;
     var loop = 0;
     var row1, row2, row3, row4, row5, total, show;
-    var today = moment();
+    console.log(response);
 
+    // set the hours
+    var hLoop = 0;
+    var hData = "[Time, Temp, Rain]";
+   
+    while (hLoop < 24){
+        if(!parseInt(response.hourly[hLoop].rain)){
+            var hRain = 0;
+        }else{
+            var hRain = response.hourly[hLoop].rain;
+        }
+        hData = hData + ",['',"+ response.hourly[hLoop].temp +","+hRain+"]";
+        // Exit
+        hLoop = hLoop + 1;
+    }
+    console.log(JSON.stringify(hData));
+    debugger;
+    var width = screen.width - 10 + "px";
+    drawVisualization(hData,width)
 
+    // set the days
     while(loop <(noDays-1)){
-
+        var today = moment();
+        var dayDisp = today.add(loop,"days").format("DD MMM YYYY");
         var disp = "display"+loop;
         if(loop == 0){
-            row1 = "<tr class='rowDate'><td class='today'>" + today.add(loop,"days").format("DD MMM YYYY") + "</td></tr>";
+            row1 = "<tr class='rowDate'><td class='today'>" + dayDisp + "</td></tr>";
             row2 = "<tr class='rowIcon'><td class='today'><img class='iconImg' src='https://openweathermap.org/img/w/" + response.daily[loop].weather[0].icon + ".png' alt='Weather Icon'/>" + "<h2 class='temp'>" + response.daily[loop].temp.day + "&deg;c</h2></td></tr>";
             row3 = "<tr class='rowMax'><td class='today'>Min: " + response.daily[loop].temp.min + "&deg;c<br/>Max: " + response.daily[loop].temp.max + "&deg;c</td></tr>";
             row4 = "<tr class='rowWind'><td class='today'>Wind: " + Math.round(response.daily[loop].wind_speed * 3.6) + "kph</td></tr>";
@@ -120,7 +139,7 @@ function displayWeather(response){
 
         }else{
 
-            row1 = "<tr class='rowDate'><td>" + today.add(loop,"days").format("DD MMM YYYY") + "</td></tr>";
+            row1 = "<tr class='rowDate'><td>" + dayDisp + "</td></tr>";
             row2 = "<tr class='rowIcon'><td><img class='iconImg' src='https://openweathermap.org/img/w/" + response.daily[loop].weather[0].icon + ".png' alt='Weather Icon'/>" + "<h2 class='temp'>" + response.daily[loop].temp.day + "&deg;c</h2></td></tr>";
             row3 = "<tr class='rowMax'><td>Min: " + response.daily[loop].temp.min + "&deg;c<br/>Max: " + response.daily[loop].temp.max + "&deg;c</td></tr>";
             row4 = "<tr class='rowWind'><td>Wind: " + Math.round(response.daily[loop].wind_speed * 3.6) + "kph</td></tr>";
@@ -135,6 +154,8 @@ function displayWeather(response){
     }
     city = city.replace(/\b[a-z]/g, (x) => x.toUpperCase());
     document.getElementById("location").textContent = city;
+    
+    document.getElementById("today").hidden = false;
     var current = [];
     current.push(response);
     localStorage.setItem("weatherCurrent",JSON.stringify(current));    

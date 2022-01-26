@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Weather</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/media.css"/>
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
 </head>
 <body onLoad="createList()">
@@ -17,27 +18,30 @@
     <div id="mainContent">
         <div id="topBlock">
             <textarea name="search" id="search" cols="30" rows="3"></textarea>
-            <button id="btn"><!--img id="searchSvg" alt="Search Icon" src="./assets/images/searchBlue.png"></img--></button>
+            <button id="btn"></button>
             <button id="target" onclick="getLocation()"></button><br/><br/>
         </div>
         <select name="history" id="history" placeholder="Select a previous search location"></select>
         <br/><br/>
         <h2 id="location"></h2>
         <br/><br/>
-        <table id="display0" hidden></table><br/><br/>
-        <table id="display1" hidden></table><br/><br/>
-        <table id="display2" hidden></table><br/><br/>
-        <table id="display3" hidden></table><br/><br/>
-        <table id="display4" hidden></table><br/><br/>
-        <table id="display5" hidden></table><br/><br/>
-        <table id="display6" hidden></table><br/><br/>
+        <table id="today"  hidden><td id="weatherToday"><div id="chart_div"></div></td></table>
+        <table id="display0" class="weatherDay" hidden></table><br/><br/>
+        <table id="display1" class="weatherDay" hidden></table><br/><br/>
+        <table id="display2" class="weatherDay" hidden></table><br/><br/>
+        <table id="display3" class="weatherDay" hidden></table><br/><br/>
+        <table id="display4" class="weatherDay" hidden></table><br/><br/>
+        <table id="display5" class="weatherDay" hidden></table><br/><br/>
+        <table id="display6" class="weatherDay" hidden></table><br/><br/>
+        
 
 
-
-        <table id="today"></table>
+        
 
     </div>
     <script src="./assets/js/mainScript.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="./assets/js/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 </html>

@@ -25,6 +25,8 @@ h1{
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-between;
+
 }
 #search{
     margin-top: 5%;
@@ -50,7 +52,6 @@ h1{
 }
 #target{
     background-image: url("../images/target.png");
-
 }
 
 #btn:hover{
@@ -60,19 +61,28 @@ h1{
     display: block;
     width: 100%;
 }
-table{
+.weatherDay{
     border: grey 1px solid;
+    width: 25%;
+    margin-bottom: 5%;
+    border-radius: 10px;
 }
+
 td{
-    /* border: black solid 1px; */
     padding: 5px;
+    margin: 0;
     width: 135px;
 }
 .rowUv, .rowWind, .rowMax, .rowDate{
     font-size: 80%;
+    background-color: aliceblue;
 }
+.rowDate{
+    font-weight: bold;
+    /* background-color: aliceblue; */
+}
+
 .rowIcon{
-    
 	background: lightskyblue;
 }
 th{
@@ -82,14 +92,31 @@ th{
     text-align: center;
 
 }
-
-.today{
-    background-color: red;;
+#weatherToday{
+    padding: 0 auto;
 }
+
+#today{
+    /* background-color: red; */
+    width: 100%;
+    border: none;
+    text-align: center;
+    padding: 0 auto;
+}
+#chart_div{
+    width: 100%; 
+    margin: 0 auto;
+    align-items: center;
+}
+#chart_div div div, #chart_div div div div{
+    width: 100% !important;
+}
+
 
 #location{
     display: block;
     width: 100%;
+    margin-top: 2%;
 }
 #history{
     margin-top: 5%;
