@@ -2,41 +2,16 @@ google.charts.load('current', {'packages':['corechart']});
 // google.charts.setOnLoadCallback(drawVisualization);
 
 function drawVisualization(hData,width) {
-debugger;
+    debugger;
     var x = "'" + hData + "'";
     // hData => hData.json();
     // hData = JSON.parse(hData);
-
+    console.log(hData);
+    console.log(parseInt(width));
     // Some raw data (not necessarily accurate)
-    var data = google.visualization.arrayToDataTable([
-
+    var data = google.visualization.arrayToDataTable(
         hData
-    // ['Time', 'Temp', 'Rain'],
-    // ['',  32,   0],
-    // ['',  28,   1.2],
-    // ['',  26,   2],
-    // ['',  27,   0.5],
-    // ['',  24,   0],
-    // ['',  32,   0],
-    // ['',  28,   1.2],
-    // ['',  26,   2],
-    // ['',  27,   0.5],
-    // ['',  24,   0],
-    // ['',  32,   0],
-    // ['',  28,   1.2],
-    // ['',  26,   2],
-    // ['',  27,   0.5],
-    // ['',  24,   0],
-    // ['',  32,   0],
-    // ['',  28,   1.2],
-    // ['',  26,   2],
-    // ['',  27,   0.5],
-    // ['',  24,   0],
-    // ['',  32,   0],
-    // ['',  28,   1.2],
-    // ['',  26,   2],
-    // ['',  24,   0]
-    ]);
+    );
 
     var options = {
     title : 'Next 24 Hours',

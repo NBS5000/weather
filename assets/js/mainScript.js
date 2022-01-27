@@ -103,7 +103,7 @@ function displayWeather(response){
 
     var noDays = response.daily.length;
     var loop = 0;
-    var row1, row2, row3, row4, row5, total, show;
+    var row1, row2, row3, row4, row5, total;
     console.log(response);
 
     // set the hours
@@ -117,14 +117,15 @@ function displayWeather(response){
         }else{
             var hRain = response.hourly[hLoop].rain;
         }
-        hData.push([0,parseInt(hLoop,response.hourly[hLoop].temp),parseInt(hRain)]);
+        hData.push(["",parseInt(response.hourly[hLoop].temp),parseInt(hRain)]);
         // Exit
         hLoop = hLoop + 1;
     }
     console.log(hData);
     // hData = JSON.stringify(hData);
     // debugger;
-    var width = screen.width - 10 + "px";
+    var width = Math.round((screen.width *0.9));
+
     drawVisualization(hData,width)
 
     // set the days
@@ -133,19 +134,45 @@ function displayWeather(response){
         var dayDisp = today.add(loop,"days").format("DD MMM YYYY");
         var disp = "display"+loop;
         if(loop == 0){
+            var uv = response.daily[loop].uvi;
+            var uvCol;
+            if(uv <3){
+                uvCol = "uvLow";
+            }else if(uv < 6){
+                uvCol = "uvMod";
+            }else if(uv < 8){
+                uvCol = "uvHigh";
+            }else if(uv < 11){
+                uvCol = "uvVhigh";
+            }else{
+                uvCol = "uvExt";
+            }
             row1 = "<tr class='rowDate'><td class='today'>" + dayDisp + "</td></tr>";
             row2 = "<tr class='rowIcon'><td class='today'><img class='iconImg' src='https://openweathermap.org/img/w/" + response.daily[loop].weather[0].icon + ".png' alt='Weather Icon'/>" + "<h2 class='temp'>" + response.daily[loop].temp.day + "&deg;c</h2></td></tr>";
             row3 = "<tr class='rowMax'><td class='today'>Min: " + response.daily[loop].temp.min + "&deg;c<br/>Max: " + response.daily[loop].temp.max + "&deg;c</td></tr>";
             row4 = "<tr class='rowWind'><td class='today'>Wind: " + Math.round(response.daily[loop].wind_speed * 3.6) + "kph</td></tr>";
-            row5 = "<tr class='rowUv'><td class='today'>UV: " + response.daily[loop].uvi + "<br/>Humidity: " + response.daily[loop].humidity + "</td></tr>";
+            row5 = "<tr class='rowUv'><td class='today "+uvCol+"'>UV: " + uv + "<br/>Humidity: " + response.daily[loop].humidity + "</td></tr>";
 
         }else{
+            var uv = response.daily[loop].uvi;
+            var uvCol;
+            if(uv <3){
+                uvCol = "uvLow";
+            }else if(uv < 6){
+                uvCol = "uvMod";
+            }else if(uv < 8){
+                uvCol = "uvHigh";
+            }else if(uv < 11){
+                uvCol = "uvVhigh";
+            }else{
+                uvCol = "uvExt";
+            }
 
             row1 = "<tr class='rowDate'><td>" + dayDisp + "</td></tr>";
             row2 = "<tr class='rowIcon'><td><img class='iconImg' src='https://openweathermap.org/img/w/" + response.daily[loop].weather[0].icon + ".png' alt='Weather Icon'/>" + "<h2 class='temp'>" + response.daily[loop].temp.day + "&deg;c</h2></td></tr>";
             row3 = "<tr class='rowMax'><td>Min: " + response.daily[loop].temp.min + "&deg;c<br/>Max: " + response.daily[loop].temp.max + "&deg;c</td></tr>";
             row4 = "<tr class='rowWind'><td>Wind: " + Math.round(response.daily[loop].wind_speed * 3.6) + "kph</td></tr>";
-            row5 = "<tr class='rowUv'><td>UV: " + response.daily[loop].uvi + "<br/>Humidity: " + response.daily[loop].humidity + "</td></tr>";
+            row5 = "<tr class='rowUv'><td class='"+uvCol+"'>UV: " + uv + "<br/>Humidity: " + response.daily[loop].humidity + "</td></tr>";
 
         }
         total = row1 + row2 + row3 + row4 + row5;
@@ -162,7 +189,7 @@ function displayWeather(response){
     current.push(response);
     localStorage.setItem("weatherCurrent",JSON.stringify(current));    
     addToHistory(city);
-
+    document.getElementById("search").value = "";
 }
 
 function addToHistory(city){
@@ -212,11 +239,11 @@ function today(){
 }
 
 /*
-    low (1-2)
-    moderate (3-5)
-    high (6-7)
-    very high (8-10)
-    extreme (11 and above).
+    low (1-2)   green
+    moderate (3-5)   yellow
+    high (6-7)   orange
+    very high (8-10)   red
+    extreme (11 and above). dark red
 */
 
 /*

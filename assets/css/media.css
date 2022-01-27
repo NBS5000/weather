@@ -7,16 +7,16 @@ Media CSS file
 @media screen and (max-width:1060px) and (min-width:650px) {
 
     table{
-        width: 33%;
+        width: 32%;
     }
 }
 @media screen and (max-width:650px) and (min-width:450px) {
     table{
-        width: 50%;
+        width: 48%;
     }
 }
 @media screen and (max-width:450px) {
     table{
-        width: 100%;
+        width: 95%;
     }
 }
