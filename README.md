@@ -31,7 +31,7 @@ Writing of a solution to resolve the situation, including:
   * *Error free loading*
   * *Favicon designed and added*
   * *Thorough comments*
-  * *Intuitive design with messages to users*
+  * *Intuitive design with feedback to users*
 * Javascript
   * *Error free performance*
   * *Multiple functions to separate aspects of code*
@@ -40,24 +40,24 @@ Writing of a solution to resolve the situation, including:
   * *Numerous commits to track changes in code*
   * *Code added to public repository and Github Pages for public viewing*
 * Functionality
-  * *Feedback to the user as to how well they've done, with a Star Wars twist*
-  * *Hall of Fame to track the best scores, which can be cleared if desired*
+  * *Feedback to the user if no city entered*
+  * *Ability to use current location, rather than entering a city*
 
 **RESULT**
 
-The end code is stored on Github, and publicly available and viewable. This result meets all requirements of the User Story and acceptance criteria:
+The end code is stored on Github, and publicly available and viewable. This result meets and exceeds all requirements of the User Story and acceptance criteria:
 
-* GIVEN a weather dashboard with form inputs
-* WHEN I search for a city
-* THEN I am presented with current and future conditions for that city and that city is added to the search history
-* WHEN I view current weather conditions for that city
-* THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-* WHEN I view the UV index
-* THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-* WHEN I view future weather conditions for that city
-* THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-* WHEN I click on a city in the search history
-* THEN I am again presented with current and future conditions for that city
+* ~~GIVEN a weather dashboard with form inputs~~
+* ~~WHEN I search for a city~~
+* ~~THEN I am presented with current and future conditions for that city and that city is added to the search history~~
+* ~~WHEN I view current weather conditions for that city~~
+* ~~THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index~~
+* ~~WHEN I view the UV index~~
+* ~~THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe~~
+* ~~WHEN I view future weather conditions for that city~~
+* ~~THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity~~
+* ~~WHEN I click on a city in the search history~~
+* ~~THEN I am again presented with current and future conditions for that city~~
 
 ## <span style="color:green"> The Outcome</span>
 
@@ -70,13 +70,13 @@ As the acceptance criteria has been met and exceeded, the task is now complete.
 > 
 > [Google FLoC](https://techcrunch.com/2021/03/30/google-starts-trialling-its-floc-cookie-alternative-in-chrome/)
 
-You can view the finished product [HERE](https://nbs5000.github.io/quizTime/)
+You can view the finished product [HERE](https://nbs5000.github.io/weather/)
 
 Alternatively, here is a screenshot:
 
-> ![Screenshot of Quiz Time page](./assets/images/screen.png "Screenshot of Quiz Time page")
+> ![Screenshot of The Weather page](./assets/images/screen.png "Screenshot of The Weather page")
 
 ---
-<p style="text-align:center;">Written by <span style="font-style:italic">Steve Barry</span> - Due date 23/12/2021</p>
+<p style="text-align:center;">Written by <span style="font-style:italic">Steve Barry</span> - Due date 31/1/2022</p>
 
-<p style="text-align:center;">© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.</p>
+<p style="text-align:center;">© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.</p>
