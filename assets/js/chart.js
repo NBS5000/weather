@@ -1,9 +1,6 @@
 google.charts.load('current', {'packages':['corechart']});
 
 function drawVisualization(hData,width) {
-    var x = "'" + hData + "'";
-    console.log(hData);
-    console.log(parseInt(width));
     var data = google.visualization.arrayToDataTable(
         hData
     );

@@ -41,7 +41,6 @@ h1{
     display: flex;
     flex-wrap: wrap;
     justify-content:space-between;
-
 }
 #search{
     margin-top: 5%;
@@ -68,7 +67,6 @@ h1{
 #target{
     background-image: url("../images/target.png");
 }
-
 #btn:hover{
     background-image: url("../images/searchWhite.png");;
 }
@@ -83,7 +81,6 @@ h1{
     margin-bottom: 5%;
     border-radius: 10px;
 }
-
 td{
     padding: 5px;
     margin: 0;
@@ -96,7 +93,6 @@ td{
 .rowDate{
     font-weight: bold;
 }
-
 .rowIcon{
 	background: lightskyblue;
 }
@@ -106,9 +102,7 @@ th{
     padding-bottom: 10px;
     text-align: center;
 }
-
 #today{
-    /* background-color: red; */
     width: 100%;
     border: none;
     text-align: center;
@@ -118,7 +112,6 @@ th{
     padding: 0 auto;
     width: 100%;
 }
-
 #chart_div{
     width: 90%; 
     margin: 0 auto;
