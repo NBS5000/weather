@@ -19,6 +19,7 @@ header{
 }
 h1{
     font-size: 200%;
+    color: red;
 }
 #mainContent{
     width: 90%;
