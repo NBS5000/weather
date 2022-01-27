@@ -11,20 +11,40 @@ var lat, lon, city, safeCity;
 
 
 
-
-if(btn){
-    btn.addEventListener("click",function(){
-        city = document.getElementById("search").value;
-        safeCity = city;//urlSafe(city);
-        tomTomUrl = "https://api.tomtom.com/search/2/geocode/" + safeCity + ".json?key=" + tomTomKey + "&language=en-AU";
-        if(city){
-            callTom(tomTomUrl);
-        }else{
-            alert("Enter a city");
-            return
-        }
-    })
+function begin(){
+    var box = document.getElementById("search");
+    city = box.value;
+    safeCity = city;//urlSafe(city);
+    tomTomUrl = "https://api.tomtom.com/search/2/geocode/" + safeCity + ".json?key=" + tomTomKey + "&language=en-AU";
+    if(city){
+        box.style.boxShadow = "none";
+        callTom(tomTomUrl);
+    }else{
+        // alert("Enter a city");
+        box.style.boxShadow = "0 0 3px red";
+        return
+    }
 }
+// if(btn){
+//     btn.addEventListener("click",begin());
+// }
+btn.addEventListener("click", function (){
+    begin();
+});
+
+// if(btn){
+//     btn.addEventListener("click",function(){
+//         city = document.getElementById("search").value;
+//         safeCity = city;//urlSafe(city);
+//         tomTomUrl = "https://api.tomtom.com/search/2/geocode/" + safeCity + ".json?key=" + tomTomKey + "&language=en-AU";
+//         if(city){
+//             callTom(tomTomUrl);
+//         }else{
+//             alert("Enter a city");
+//             return
+//         }
+//     })
+// }
 
 function createList(){
     var exist = JSON.parse(localStorage.getItem("weatherHistory"));
@@ -230,9 +250,13 @@ function dropList(){
 }
 
 function histSelect(){
+    debugger
     var selected = document.getElementById("history").value;
     document.getElementById("search").value = selected;
 
-
+    begin();
 }
-document.getElementById("history").addEventListener("change", histSelect());
+var hist = document.getElementById("history");
+hist.addEventListener("change", function (){
+    histSelect();
+});
