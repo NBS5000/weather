@@ -65,6 +65,7 @@ h1{
 .weatherDay{
     border: grey 1px solid;
     width: 24%;
+    margin: 0 auto;
     margin-bottom: 5%;
     border-radius: 10px;
 }
@@ -80,7 +81,6 @@ td{
 }
 .rowDate{
     font-weight: bold;
-    /* background-color: aliceblue; */
 }
 
 .rowIcon{
@@ -121,6 +121,9 @@ th{
     margin: 0 auto;
 }
 #legDiv{
+    width: 100%;
+}
+svg{
     width: 100%;
 }
 #location{
