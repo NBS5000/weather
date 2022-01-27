@@ -98,7 +98,7 @@ th{
     width: 90%;
     border: none;
     text-align: center;
-    padding: 0 auto;
+    margin: 0 auto;
 }
 #weatherToday{
     padding: 0 auto;
@@ -106,15 +106,22 @@ th{
 }
 
 #chart_div{
-    width: 100%; 
+    width: 90%; 
     margin: 0 auto;
     align-items: center;
 }
 #chart_div div div, #chart_div div div div{
     width: 100% !important;
 }
-
-
+#legend{
+    display: none;
+    height: 30px;
+    width:200px;
+    margin: 0 auto;
+}
+#legDiv{
+    width: 100%;
+}
 #location{
     display: block;
     width: 100%;

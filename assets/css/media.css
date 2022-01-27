@@ -6,17 +6,17 @@ Media CSS file
 
 @media screen and (max-width:1060px) and (min-width:650px) {
 
-    table{
+    .weatherDay{
         width: 32%;
     }
 }
 @media screen and (max-width:650px) and (min-width:450px) {
-    table{
+    .weatherDay{
         width: 48%;
     }
 }
 @media screen and (max-width:450px) {
-    table{
+    .weatherDay{
         width: 95%;
     }
 }

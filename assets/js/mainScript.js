@@ -12,11 +12,8 @@ var lat, lon, city, safeCity;
 
 
 
-//debugger;
 if(btn){
-    //debugger;
     btn.addEventListener("click",function(){
-        // document.getElementById("search").value = "melbourne";
         city = document.getElementById("search").value;
         safeCity = city;//urlSafe(city);
         tomTomUrl = "https://api.tomtom.com/search/2/geocode/" + safeCity + ".json?key=" + tomTomKey + "&language=en-AU";
@@ -34,7 +31,6 @@ function createList(){
     if (!exist){
         var setCity = {city:""};
         var list = [];
-        // list.push(setCity);
         localStorage.setItem("weatherHistory",JSON.stringify(list));    
         localStorage.setItem("weatherCurrent",JSON.stringify(list));
     }
@@ -125,7 +121,7 @@ function displayWeather(response){
     // hData = JSON.stringify(hData);
     // debugger;
     var width = Math.round((screen.width *0.9));
-
+    localStorage.setItem("hourly",JSON.stringify(hData));
     drawVisualization(hData,width)
 
     // set the days
@@ -183,6 +179,7 @@ function displayWeather(response){
     }
     city = city.replace(/\b[a-z]/g, (x) => x.toUpperCase());
     document.getElementById("location").textContent = city;
+    document.getElementById("legend").style.display = "block";
     
     document.getElementById("today").hidden = false;
     var current = [];
@@ -232,34 +229,10 @@ function dropList(){
     document.getElementById("history").innerHTML = content;
 }
 
-function today(){
-    // var todayExpand = localStorage.getItem("weatherCurrent");
+function histSelect(){
+    var selected = document.getElementById("history").value;
+    document.getElementById("search").value = selected;
 
 
 }
-
-/*
-    low (1-2)   green
-    moderate (3-5)   yellow
-    high (6-7)   orange
-    very high (8-10)   red
-    extreme (11 and above). dark red
-*/
-
-/*
-    if(!parseInt(showRain)){
-        showRain = 0;
-    }
-    document.getElementById("rain").innerHTML = showRain + "mm";
-    */
-/*
-    // update localstorage
-    var storage = JSON.parse(localStorage.getItem("dateNight"));
-    // sets the different values of the date
-    storage[0].icon = iconLink;
-    storage[0].temp = showTemp;
-    storage[0].wind = showWind;
-    storage[0].rain = showRain;
-    // sets the updated array to localstorage
-    localStorage.setItem('dateNight', JSON.stringify(storage));
-*/
+document.getElementById("history").addEventListener("change", histSelect());
