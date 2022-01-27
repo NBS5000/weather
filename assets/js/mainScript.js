@@ -76,7 +76,6 @@ function showPosition(position) {
 
 
 function callTom(url){
-    //debugger;
     fetch(url)
         .then(
             res => res.json(),
@@ -95,8 +94,6 @@ function callTom(url){
 }
 
 function getWeather(lat, lon){
-    // debugger;
-
     //construct request URL to get city weather info from coordinates
     var requestCityWeather = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=metric&appid=022816ce4f8542d4f9f3d06e40efbb54&exclude=minutely";    
     fetch(requestCityWeather)
@@ -121,33 +118,28 @@ function displayWeather(response){
     var loop = 0;
     var row1, row2, row3, row4, row5, total;
     console.log(response);
-
     // set the hours
     var hLoop = 0;
     var hData = [];
     hData.push(["Hour","Temp", "Rain"]);
-
     while (hLoop < 24){
-        if(!parseInt(response.hourly[hLoop].rain)){
+        if(!response.hourly[hLoop].rain){
             var hRain = 0;
         }else{
-            var hRain = response.hourly[hLoop].rain;
+            var hRain = Math.round(response.hourly[hLoop].rain["1h"]);
         }
-        hData.push(["",parseInt(response.hourly[hLoop].temp),parseInt(hRain)]);
+        hData.push(["",parseInt(response.hourly[hLoop].temp),hRain]);
         // Exit
         hLoop = hLoop + 1;
     }
     console.log(hData);
-    // hData = JSON.stringify(hData);
-    // debugger;
     var width = Math.round((screen.width *0.9));
     localStorage.setItem("hourly",JSON.stringify(hData));
     drawVisualization(hData,width)
-
     // set the days
     while(loop <(noDays-1)){
         var today = moment();
-        var dayDisp = today.add(loop,"days").format("DD MMM YYYY");
+        var dayDisp = today.add(loop,"days").format("ddd - DD MMM YYYY");
         var disp = "display"+loop;
         if(loop == 0){
             var uv = response.daily[loop].uvi;
@@ -167,7 +159,7 @@ function displayWeather(response){
             row2 = "<tr class='rowIcon'><td class='today'><img class='iconImg' src='https://openweathermap.org/img/w/" + response.daily[loop].weather[0].icon + ".png' alt='Weather Icon'/>" + "<h2 class='temp'>" + response.daily[loop].temp.day + "&deg;c</h2></td></tr>";
             row3 = "<tr class='rowMax'><td class='today'>Min: " + response.daily[loop].temp.min + "&deg;c<br/>Max: " + response.daily[loop].temp.max + "&deg;c</td></tr>";
             row4 = "<tr class='rowWind'><td class='today'>Wind: " + Math.round(response.daily[loop].wind_speed * 3.6) + "kph</td></tr>";
-            row5 = "<tr class='rowUv'><td class='today "+uvCol+"'>UV: " + uv + "<br/>Humidity: " + response.daily[loop].humidity + "</td></tr>";
+            row5 = "<tr class='rowUv'><td class='today "+uvCol+"'>UV: " + uv + "<br/><span class='hum'>Humidity: " + response.daily[loop].humidity + "</span></td></tr>";
 
         }else{
             var uv = response.daily[loop].uvi;
@@ -188,7 +180,7 @@ function displayWeather(response){
             row2 = "<tr class='rowIcon'><td><img class='iconImg' src='https://openweathermap.org/img/w/" + response.daily[loop].weather[0].icon + ".png' alt='Weather Icon'/>" + "<h2 class='temp'>" + response.daily[loop].temp.day + "&deg;c</h2></td></tr>";
             row3 = "<tr class='rowMax'><td>Min: " + response.daily[loop].temp.min + "&deg;c<br/>Max: " + response.daily[loop].temp.max + "&deg;c</td></tr>";
             row4 = "<tr class='rowWind'><td>Wind: " + Math.round(response.daily[loop].wind_speed * 3.6) + "kph</td></tr>";
-            row5 = "<tr class='rowUv'><td class='"+uvCol+"'>UV: " + uv + "<br/>Humidity: " + response.daily[loop].humidity + "</td></tr>";
+            row5 = "<tr class='rowUv'><td class='"+uvCol+"'>UV: " + uv + "<br/><span class='hum'>Humidity: " + response.daily[loop].humidity + "</span></td></tr>";
 
         }
         total = row1 + row2 + row3 + row4 + row5;
@@ -200,7 +192,8 @@ function displayWeather(response){
     city = city.replace(/\b[a-z]/g, (x) => x.toUpperCase());
     document.getElementById("location").textContent = city;
     document.getElementById("legend").style.display = "block";
-    
+    document.getElementById("next").style.display = "block";
+    // document.getElementsByTagName("footer").style.display = "block";
     document.getElementById("today").hidden = false;
     var current = [];
     current.push(response);
@@ -250,10 +243,8 @@ function dropList(){
 }
 
 function histSelect(){
-    debugger
     var selected = document.getElementById("history").value;
     document.getElementById("search").value = selected;
-
     begin();
 }
 var hist = document.getElementById("history");

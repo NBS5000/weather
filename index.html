@@ -12,7 +12,7 @@
 </head>
 <body onLoad="createList()">
     <header>
-        <h1>Weather Dashboard</h1>
+        <h1>The Weather!</h1>
 
     </header>
     <div id="mainContent">
@@ -24,7 +24,7 @@
         <select name="history" id="history" placeholder="Select a previous search location"></select>
 
         <h2 id="location"></h2>
-
+        <h3 id="next"><em>- Next 24 Hours -</em></h3>
         <table id="today"  hidden><td id="weatherToday"><div id="chart_div"></div></td></table>
         <div id="legDiv"><img id="legend" src="./assets/images/legend.png" alt="Legend for hourly graph"></div>
         <table id="display0" class="weatherDay" hidden></table>
@@ -35,9 +35,13 @@
         <table id="display5" class="weatherDay" hidden></table>
         <table id="display6" class="weatherDay" hidden></table>
         
-
-
-        
+        <div></div>
+        <footer>
+            <h4 id="uvDisc">UV ratings taken from <a href="https://www.cancer.org.au/cancer-information/causes-and-prevention/sun-safety/uv-index" target="_blank">The Cancer Council</a><br/><br/>
+            <span class="uvLow">Low: 1-2, </span><span class="uvMod">Moderate: 3-5, </span><span class="uvHigh">High: 6-7, </span>
+            <span class="uvVhigh">Very High: 8-10, </span><span class="uvExt">Extreme: 11+</span>
+            </h4>
+        </footer>
 
     </div>
     <script src="./assets/js/mainScript.js"></script>

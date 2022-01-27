@@ -5,7 +5,6 @@ Media CSS file
 */
 
 @media screen and (max-width:1060px) and (min-width:650px) {
-
     .weatherDay{
         width: 32%;
     }
