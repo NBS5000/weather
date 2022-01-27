@@ -4,7 +4,8 @@ google.charts.load('current', {'packages':['corechart']});
 function drawVisualization(hData,width) {
 debugger;
     var x = "'" + hData + "'";
-    hData => hData.json();
+    // hData => hData.json();
+    // hData = JSON.parse(hData);
 
     // Some raw data (not necessarily accurate)
     var data = google.visualization.arrayToDataTable([

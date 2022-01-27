@@ -100,7 +100,7 @@ function getWeather(lat, lon){
 }
 
 function displayWeather(response){
-   
+
     var noDays = response.daily.length;
     var loop = 0;
     var row1, row2, row3, row4, row5, total, show;
@@ -108,20 +108,22 @@ function displayWeather(response){
 
     // set the hours
     var hLoop = 0;
-    var hData = "[Time, Temp, Rain]";
-   
+    var hData = [];
+    hData.push(["Hour","Temp", "Rain"]);
+
     while (hLoop < 24){
         if(!parseInt(response.hourly[hLoop].rain)){
             var hRain = 0;
         }else{
             var hRain = response.hourly[hLoop].rain;
         }
-        hData = hData + ",['',"+ response.hourly[hLoop].temp +","+hRain+"]";
+        hData.push([0,parseInt(hLoop,response.hourly[hLoop].temp),parseInt(hRain)]);
         // Exit
         hLoop = hLoop + 1;
     }
-    console.log(JSON.stringify(hData));
-    debugger;
+    console.log(hData);
+    // hData = JSON.stringify(hData);
+    // debugger;
     var width = screen.width - 10 + "px";
     drawVisualization(hData,width)
 
