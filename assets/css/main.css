@@ -22,6 +22,10 @@ footer{
     text-align: center;
     margin: 0 auto;
     display: none;
+    background-color: lightblue;
+    bottom: 0;
+    width: 100%;
+    padding: 1%;
 }
 a{
     text-decoration: none;

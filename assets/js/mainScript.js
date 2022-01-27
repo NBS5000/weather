@@ -193,7 +193,7 @@ function displayWeather(response){
     document.getElementById("location").textContent = city;
     document.getElementById("legend").style.display = "block";
     document.getElementById("next").style.display = "block";
-    // document.getElementsByTagName("footer").style.display = "block";
+    document.getElementsByTagName("footer")[0].style.display = "block";
     document.getElementById("today").hidden = false;
     var current = [];
     current.push(response);
