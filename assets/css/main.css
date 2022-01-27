@@ -19,7 +19,7 @@ header{
 }
 h1{
     font-size: 200%;
-    color: red;
+    color: purple;
 }
 #mainContent{
     width: 90%;
@@ -96,7 +96,7 @@ th{
 
 #today{
     /* background-color: red; */
-    width: 90%;
+    width: 100%;
     border: none;
     text-align: center;
     margin: 0 auto;
